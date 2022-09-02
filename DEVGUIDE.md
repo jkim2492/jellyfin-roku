@@ -23,7 +23,6 @@ Install Dependencies:
 
 ```bash
 npm install
-npx ropm install
 ```
 
 
