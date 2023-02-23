@@ -83,6 +83,27 @@ sub Main (args as dynamic) as void
     ' "group" is always "whats on the screen"
     ' m.scene's children is the "previous view" stack
     while true
+        d = CreateObject("roSGNode", "Group")
+        allnodes = d.getAll()
+        hasfonts = []
+        nofonts = []
+        for each n in allnodes
+            try
+                n.font = "font:LargeSystemFont"
+                hasfonts.push(n)
+            catch e
+                nofonts.push(n)
+            end try
+        end for
+        ?"Has"
+        for each x in hasfonts
+            ?x
+        end for
+        ?"Not"
+        for each y in nofonts
+            ?y
+        end for
+
         msg = wait(0, m.port)
         if type(msg) = "roSGScreenEvent" and msg.isScreenClosed()
             print "CLOSING SCREEN"
